@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Gajraj Education Group</title>
+  <style>
+    :root {
+      --navy: #081b4b;
+      --blue: #123f98;
+      --gold: #f2b600;
+      --bg: #f4f7fb;
+      --text: #132244;
+      --muted: #5f6b85;
+      --white: #fff;
+      --line: #dfe5ef;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: auto;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(8,27,75,.08);
+      padding: 30px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: var(--navy);
+      font-size: 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      font-size: 15px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    .msg {
+      margin-top: 18px;
+      font-weight: 700;
+      color: green;
+      display: none;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      body { padding: 18px; }
+      .container { padding: 20px; }
+      h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-actions">
+      <h2>Gajraj Education Group Admin</h2>
+      <a href="index.html" target="_blank" style="color: var(--navy); font-weight:700; text-decoration:none;">Open Website</a>
+    </div>
+
+    <div class="grid">
+      <div class="full">
+        <label>Website Title</label>
+        <input id="siteTitle" type="text" value="Gajraj Education Group - Denok" />
+      </div>
+
+      <div>
+        <label>Phone</label>
+        <input id="phone" type="text" value="9928232015" />
+      </div>
+
+      <div>
+        <label>WhatsApp Number</label>
+        <input id="whatsapp" type="text" value="919928232015" />
+      </div>
+
+      <div class="full">
+        <label>Tagline</label>
+        <input id="tagline" type="text" value="शिक्षा, डिजिटल सेवाएं और बेहतर भविष्य — एक ही जगह" />
+      </div>
+
+      <div class="full">
+        <label>Address</label>
+        <textarea id="address">Lohawat Road, Shri Vishwakarma Nagar, Denok, Phalodi (Raj.) – 342308</textarea>
+      </div>
+
+      <div class="full">
+        <label>About Us</label>
+        <textarea id="about">14 February 2021 से शिक्षा और डिजिटल सेवाओं के क्षेत्र में काम करने वाला स्थानीय केंद्र, जहाँ coaching, E-Mitra, banking और online services को एक साथ उपलब्ध कराने का प्रयास है।</textarea>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button onclick="saveData()">Save Changes</button>
+    </div>
+
+    <div id="msg" class="msg">Saved successfully.</div>
+  </div>
+
+  <script>
+    const defaultData = {
+      siteTitle: 'Gajraj Education Group - Denok',
+      tagline: 'शिक्षा, डिजिटल सेवाएं और बेहतर भविष्य — एक ही जगह',
+      phone: '9928232015',
+      whatsapp: '919928232015',
+      address: 'Lohawat Road, Shri Vishwakarma Nagar, Denok, Phalodi (Raj.) – 342308',
+      about: '14 February 2021 से शिक्षा और डिजिटल सेवाओं के क्षेत्र में काम करने वाला स्थानीय केंद्र, जहाँ coaching, E-Mitra, banking और online services को एक साथ उपलब्ध कराने का प्रयास है।'
+    };
+
+    function loadData() {
+      const saved = JSON.parse(localStorage.getItem('gajrajSiteData') || '{}');
+      const data = { ...defaultData, ...saved };
+
+      document.getElementById('siteTitle').value = data.siteTitle;
+      document.getElementById('phone').value = data.phone;
+      document.getElementById('whatsapp').value = data.whatsapp;
+      document.getElementById('tagline').value = data.tagline;
+      document.getElementById('address').value = data.address;
+      document.getElementById('about').value = data.about;
+    }
+
+    function saveData() {
+      const data = {
+        siteTitle: document.getElementById('siteTitle').value,
+        phone: document.getElementById('phone').value,
+        whatsapp: document.getElementById('whatsapp').value,
+        tagline: document.getElementById('tagline').value,
+        address: document.getElementById('address').value,
+        about: document.getElementById('about').value
+      };
+
+      localStorage.setItem('gajrajSiteData', JSON.stringify(data));
+      document.getElementById('msg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('msg').style.display = 'none';
+      }, 1800);
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

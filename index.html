@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="siteTitleDisplay">Gajraj Education Group - Denok</title>
+  <meta name="description" content="Gajraj Education Group - Denok | Coaching, digital services, E-Mitra, banking and education support." />
+  <style>
+    :root{
+      --navy:#081b4b;
+      --blue:#123f98;
+      --gold:#f2b600;
+      --red:#e5462e;
+      --bg:#f6f8fc;
+      --text:#15213d;
+      --muted:#5f6b85;
+      --white:#fff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,"Noto Sans Devanagari",sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:auto}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #e3e8f2;
+    }
+    .nav{min-height:78px;display:flex;align-items:center;gap:22px}
+    .brand img{width:95px;height:82px;object-fit:contain}
+    nav{display:flex;gap:22px;margin-left:auto;align-items:center}
+    nav a{font-weight:700;color:var(--navy)}
+    nav a:hover{color:var(--red)}
+    .menu{display:none;border:0;background:none;font-size:28px;cursor:pointer;color:var(--navy);margin-left:auto}
+    .btn{display:inline-block;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-weight:800;box-shadow:0 8px 20px #081b4b22}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-outline{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none}
+    .btn-small{padding:9px 15px}
+
+    .hero{background:linear-gradient(135deg,#fff 0%,#eef4ff 50%,#fff6d8 100%);padding:70px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+    .eyebrow{display:inline-block;color:var(--blue);font-weight:900;letter-spacing:1px;font-size:13px;text-transform:uppercase}
+    h1{font-size:clamp(38px,5vw,64px);line-height:1.05;margin:12px 0 18px;color:var(--navy)}
+    h2{font-size:clamp(30px,4vw,44px);line-height:1.15;margin:8px 0 14px;color:var(--navy)}
+    h3{margin:0 0 8px;color:var(--navy)}
+    .lead{font-size:24px;font-weight:900;color:var(--red);margin:0 0 8px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+    .stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+    .stats div{display:flex;flex-direction:column}
+    .stats strong{font-size:25px;color:var(--blue)}
+    .stats span{color:var(--muted);font-size:13px}
+    .hero-card{background:#fff;border-radius:28px;padding:15px;box-shadow:0 25px 60px #081b4b22;border:1px solid #e7ebf4}
+    .portrait{display:block;width:100%;border-radius:20px;max-height:520px;object-fit:cover;object-position:center top}
+    .nameplate{margin-top:12px;background:var(--navy);color:#fff;border-radius:16px;padding:14px;text-align:center}
+    .nameplate strong{display:block;font-size:19px}
+    .nameplate span{color:#ffd33d;font-weight:800}
+
+    .section{padding:78px 0}
+    .alt{background:#eef3fb}
+    .dark{background:var(--navy);color:#e8eeff}
+    .dark h2{color:#fff}
+    .light{color:#ffd33d}
+    .section-head{max-width:760px;margin-bottom:32px}
+    .section-head p{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .cards article,.service-grid>div,.update-box>div{background:#fff;padding:24px;border-radius:18px;border:1px solid #e1e7f1;box-shadow:0 10px 25px #081b4b0a}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service-grid>div{display:flex;flex-direction:column;gap:4px;font-size:18px}
+    .service-grid span{font-size:14px;color:var(--muted)}
+    .update-box{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .update-box>div{display:flex;flex-direction:column}.update-box span{color:var(--muted);font-size:14px}
+
+    .about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center}
+    .about-grid p{color:#d8e0f5;font-size:1.05rem}
+    .about-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}.about-list div{padding:15px;border:1px solid #ffffff22;border-radius:12px;background:#ffffff0d;color:#fff;font-weight:700}
+
+    .contact-grid{display:grid;grid-template-columns:1fr .6fr;gap:60px;align-items:start}
+    .contact a{color:var(--blue);font-weight:800}
+    .social{display:flex;flex-direction:column;gap:12px}
+    .social a{padding:14px;border:1px solid #dfe5ef;border-radius:12px;background:#fff;display:block;font-weight:700}
+    .map-note{margin-top:10px;padding:18px;background:#fff8db;border-radius:14px;color:var(--text);border:1px solid #f4e7b2;font-weight:600}
+
+    .footer-image{background:#081b4b;padding:18px 0}
+    .footer-image img{display:block;width:min(1226px,96%);margin:auto;border-radius:12px}
+    footer{background:#061334;color:#dbe4fb}
+    .foot{display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-size:13px;align-items:center;flex-wrap:wrap}
+
+    @media(max-width:900px){
+      nav{display:none;position:absolute;left:0;right:0;top:78px;background:#fff;flex-direction:column;padding:18px 5%;border-bottom:1px solid #ddd}
+      nav.open{display:flex}
+      .menu{display:block}
+      .nav .btn-small{display:none}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .service-grid{grid-template-columns:1fr 1fr}
+      .update-box{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:560px){
+      .hero{padding:42px 0}
+      .section{padding:55px 0}
+      .cards,.service-grid,.update-box{grid-template-columns:1fr}
+      .stats{gap:18px}.stats strong{font-size:22px}
+      .brand img{width:82px;height:70px}
+      .foot{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Gajraj Education Group">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Gajraj Education Group Logo" />
+      </a>
+      <button class="menu" aria-label="Menu" id="menuBtn">☰</button>
+      <nav id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#coaching">Coaching</a>
+        <a href="#services">Services</a>
+        <a href="#updates">Updates</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-small" id="whatsappLink" href="https://wa.me/919928232015" target="_blank" rel="noreferrer">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Gajraj Education Group</span>
+          <h1 id="titleDisplay">GAJRAJ EDUCATION GROUP – DENOK</h1>
+          <p class="lead" id="taglineDisplay">शिक्षा, डिजिटल सेवाएं और बेहतर भविष्य — एक ही जगह</p>
+          <p style="font-size:22px;font-weight:700;color:var(--navy);margin:0;">आपकी सफलता हमारा लक्ष्य</p>
+
+          <div class="actions">
+            <a class="btn" href="#contact">संपर्क करें</a>
+            <a class="btn btn-outline" id="whatsappButton" href="https://wa.me/919928232015" target="_blank" rel="noreferrer">WhatsApp करें</a>
+          </div>
+
+          <div class="stats">
+            <div>
+              <strong>2021</strong>
+              <span>स्थापना</span>
+            </div>
+            <div>
+              <strong>150+</strong>
+              <span>Google Reviews</span>
+            </div>
+            <div>
+              <strong>10+</strong>
+              <span>प्रमुख सेवाएं</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img class="portrait" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80" alt="Education and digital services" />
+          <div class="nameplate">
+            <strong>Bhavesh Suthar (BS Sir)</strong>
+            <span>Cyber Expert & Maths Educator</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coaching">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Coaching Classes</span>
+          <h2>Maths की मजबूत तैयारी</h2>
+          <p>Class 6–12 के विद्यार्थियों के लिए Basic से Advanced स्तर तक मार्गदर्शन।</p>
+        </div>
+
+        <div class="cards">
+          <article>
+            <h3>RBSE Maths</h3>
+            <p>कक्षा 6–12, विशेष फोकस 9वीं–12वीं।</p>
+          </article>
+          <article>
+            <h3>Foundation</h3>
+            <p>Maths Foundation और Pre-Foundation तैयारी।</p>
+          </article>
+          <article>
+            <h3>Competitive Maths</h3>
+            <p>NDA Maths तथा Army तैयारी के लिए Maths, Science &amp; Reasoning support.</p>
+          </article>
+          <article>
+            <h3>Smart Classroom</h3>
+            <p>AC Digital Classroom, CCTV, Notes, Practice Sheets और Doubt Support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Digital Services</span>
+          <h2>हमारी प्रमुख सेवाएं</h2>
+        </div>
+
+        <div class="service-grid">
+          <div><strong>🧾 E-Mitra Services</strong><span>सरकारी एवं ऑनलाइन सेवाएं</span></div>
+          <div><strong>🏦 Banking Services</strong><span>AEPS, transfer, deposit/withdrawal</span></div>
+          <div><strong>💻 Online Form Filling</strong><span>Forms, admissions, applications</span></div>
+          <div><strong>📄 Government Schemes</strong><span>योजनाओं से जुड़ी डिजिटल सहायता</span></div>
+          <div><strong>🪪 Jan Aadhaar / SSO / PAN</strong><span>Update और application support</span></div>
+          <div><strong>🖨️ Print, Scan &amp; PVC</strong><span>Print, scan, lamination और PVC card</span></div>
+          <div><strong>📷 Passport Photo</strong><span>Photo studio एवं document services</span></div>
+          <div><strong>🎓 Computer Education</strong><span>Basic computer एवं upcoming courses</span></div>
+          <div><strong>✈️ Passport Services</strong><span>Online application support</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="updates">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Latest Updates</span>
+          <h2>नई जानकारी यहाँ देखें</h2>
+          <p>Vacancy, scholarship, admission, government schemes और जरूरी digital-service updates.</p>
+        </div>
+
+        <div class="update-box">
+          <div><h3>Government Vacancy</h3><span>नई भर्ती और eligibility updates</span></div>
+          <div><h3>Admission</h3><span>Coaching एवं education updates</span></div>
+          <div><h3>Scholarship</h3><span>Scholarship एवं student information</span></div>
+          <div><h3>Public Service</h3><span>Jan Aadhaar, E-Mitra और अन्य सेवाओं की जानकारी</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow light">About Us</span>
+          <h2>GAJRAJ EDUCATION GROUP – DENOK</h2>
+          <p id="aboutDisplay">14 February 2021 से शिक्षा और डिजिटल सेवाओं के क्षेत्र में काम करने वाला स्थानीय केंद्र, जहाँ coaching, E-Mitra, banking और online services को एक साथ उपलब्ध कराने का प्रयास है।</p>
+          <p>हमारा उद्देश्य विद्यार्थियों, किसानों और आम नागरिकों को सही जानकारी, डिजिटल सहायता और बेहतर शैक्षणिक मार्गदर्शन उपलब्ध कराना है।</p>
+        </div>
+
+        <div class="about-list">
+          <div>✓ Expert Guidance</div>
+          <div>✓ AC Digital Classroom</div>
+          <div>✓ CCTV Security</div>
+          <div>✓ High-Speed Internet</div>
+          <div>✓ Print / Scan / Lamination</div>
+          <div>✓ Experienced Staff</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact">
+          <span class="eyebrow">Contact</span>
+          <h2>Gajraj Education Group – Denok</h2>
+          <p><strong>BHAVESH SUTHAR (BS SIR)</strong><br />Cyber Expert &amp; Maths Educator</p>
+
+          <p id="addressDisplay">📍 Lohawat Road, Shri Vishwakarma Nagar, Denok, Phalodi (Raj.) – 342308</p>
+
+          <p>📱 <a id="phoneDisplay" href="tel:9928232015">9928232015</a></p>
+
+          <div class="actions">
+            <a class="btn" href="tel:9928232015">Call Now</a>
+            <a class="btn btn-outline" id="whatsappButton2" href="https://wa.me/919928232015" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+
+          <div class="map-note">Google Maps में “Gajraj Education Group Denok” खोजें।</div>
+        </div>
+
+        <div class="social">
+          <span class="eyebrow">Social</span>
+          <a href="#" target="_blank" rel="noreferrer">▶ YouTube: BS SIR Maths by BS SIR</a>
+          <a href="#" target="_blank" rel="noreferrer">◎ Instagram: @bs_kulariya</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-image">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Gajraj Education Group footer banner" />
+  </div>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2026 Gajraj Education Group – Denok</div>
+      <div>आपकी सफलता हमारा लक्ष्य</div>
+    </div>
+  </footer>
+
+  <script>
+    const defaultData = {
+      siteTitle: 'Gajraj Education Group - Denok',
+      tagline: 'शिक्षा, डिजिटल सेवाएं और बेहतर भविष्य — एक ही जगह',
+      phone: '9928232015',
+      whatsapp: '919928232015',
+      address: 'Lohawat Road, Shri Vishwakarma Nagar, Denok, Phalodi (Raj.) – 342308',
+      about: '14 February 2021 से शिक्षा और डिजिटल सेवाओं के क्षेत्र में काम करने वाला स्थानीय केंद्र, जहाँ coaching, E-Mitra, banking और online services को एक साथ उपलब्ध कराने का प्रयास है।'
+    };
+
+    const saved = JSON.parse(localStorage.getItem('gajrajSiteData') || '{}');
+    const data = { ...defaultData, ...saved };
+
+    document.title = data.siteTitle;
+    document.getElementById('siteTitleDisplay').textContent = data.siteTitle;
+    document.getElementById('titleDisplay').textContent = data.siteTitle.toUpperCase();
+    document.getElementById('taglineDisplay').textContent = data.tagline;
+    document.getElementById('phoneDisplay').textContent = data.phone;
+    document.getElementById('phoneDisplay').href = 'tel:' + data.phone;
+    document.getElementById('addressDisplay').textContent = '📍 ' + data.address;
+    document.getElementById('aboutDisplay').textContent = data.about;
+
+    const waLink = 'https://wa.me/' + data.whatsapp;
+    document.getElementById('whatsappLink').href = waLink;
+    document.getElementById('whatsappButton').href = waLink;
+    document.getElementById('whatsappButton2').href = waLink;
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('open')));
+  </script>
+</body>
+</html>
